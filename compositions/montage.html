@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Marcellus";
+          src: url("assets/fonts/marcellus-latin-400-normal.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #mt-head {
+          position: absolute;
+          left: 110px;
+          right: 140px;
+          top: 290px;
+        }
+        #mt-eyebrow {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 30px;
+          letter-spacing: 0.32em;
+          color: #c9a66b;
+          margin-bottom: 18px;
+        }
+        #mt-title {
+          display: flex;
+          gap: 26px;
+          font-family: "Marcellus", serif;
+          font-size: 100px;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          color: #f4e8d4;
+        }
+        #mt-title span {
+          display: inline-block;
+        }
+        #mt-stage {
+          position: absolute;
+          left: 90px;
+          top: 600px;
+          width: 900px;
+          height: 820px;
+        }
+        .mt-dish {
+          position: absolute;
+          inset: 0;
+          opacity: 0;
+        }
+        .mt-dish img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0 36px 44px rgba(20, 4, 8, 0.55));
+        }
+        #mt-names {
+          position: absolute;
+          left: 110px;
+          right: 140px;
+          top: 1395px;
+          height: 90px;
+        }
+        .mt-name {
+          position: absolute;
+          left: 0;
+          top: 0;
+          font-family: "Marcellus", serif;
+          font-size: 76px;
+          line-height: 1;
+          color: #f4e8d4;
+          opacity: 0;
+          white-space: nowrap;
+        }
+        #mt-rule {
+          position: absolute;
+          left: 110px;
+          top: 1380px;
+          width: 120px;
+          height: 4px;
+          background: #c9a66b;
+        }
+      </style>
+
+      <div data-hf-id="hf-4dmo" id="root" data-composition-id="montage" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-0c7x" id="mt-head">
+          <div data-hf-id="hf-4jn7" id="mt-eyebrow">SABOR AUTÉNTICO</div>
+          <div data-hf-id="hf-z91b" id="mt-title"><span data-hf-id="hf-a6u8" id="mt-t1">Hecho</span><span data-hf-id="hf-rkrp" id="mt-t2">al</span><span data-hf-id="hf-yhpu" id="mt-t3">momento</span></div>
+        </div>
+
+        <div data-hf-id="hf-5l5f" id="mt-stage">
+          <div data-hf-id="hf-5bki" id="mt-d0" class="mt-dish"><img data-hf-id="hf-ltc2" src="assets/dishes/gyozas.png" alt="Gyozas"></div>
+          <div data-hf-id="hf-99oj" id="mt-d1" class="mt-dish"><img data-hf-id="hf-ag67" src="assets/dishes/tallarines-camarones.png" alt="Tallarines con camarones"></div>
+          <div data-hf-id="hf-0lso" id="mt-d2" class="mt-dish"><img data-hf-id="hf-azk4" src="assets/dishes/agridulce.png" alt="Agridulce"></div>
+          <div data-hf-id="hf-1dgh" id="mt-d3" class="mt-dish"><img data-hf-id="hf-p4a6" src="assets/dishes/arrollados.png" alt="Arrollados"></div>
+          <div data-hf-id="hf-spkm" id="mt-d4" class="mt-dish"><img data-hf-id="hf-h0mr" src="assets/dishes/carne-cebollin.png" alt="Carne con cebollín"></div>
+          <div data-hf-id="hf-wnon" id="mt-d5" class="mt-dish"><img data-hf-id="hf-jsk1" src="assets/dishes/pollo-verduras.png" alt="Pollo con verduras"></div>
+        </div>
+
+        <div data-hf-id="hf-48ml" id="mt-rule"></div>
+        <div data-hf-id="hf-xtq1" id="mt-names">
+          <div data-hf-id="hf-r6p2" id="mt-n0" class="mt-name">Gyozas</div>
+          <div data-hf-id="hf-jy2g" id="mt-n1" class="mt-name">Tallarines con camarones</div>
+          <div data-hf-id="hf-cx3h" id="mt-n2" class="mt-name">Agridulce</div>
+          <div data-hf-id="hf-8467" id="mt-n3" class="mt-name">Arrollados</div>
+          <div data-hf-id="hf-1xca" id="mt-n4" class="mt-name">Carne con cebollín</div>
+          <div data-hf-id="hf-w5fs" id="mt-n5" class="mt-name">Pollo con verduras</div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // Title: waterfall entry.
+        tl.fromTo("#mt-eyebrow", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.05);
+        tl.fromTo(["#mt-t1", "#mt-t2", "#mt-t3"], { y: 90, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power4.out", stagger: 0.09 }, 0.1);
+        tl.fromTo("#mt-rule", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.out", transformOrigin: "0% 50%" }, 0.3);
+
+        // Dish relay: each springs in with a spin, then swaps out to the left.
+        const START = 0.2;
+        const STEP = 0.8;
+        const COUNT = 6;
+        for (let i = 0; i < COUNT; i++) {
+          const t = START + i * STEP;
+          const dir = i % 2 === 0 ? 1 : -1;
+          tl.fromTo(`#mt-d${i}`, { scale: 0.5, rotation: -22 * dir, x: 360 * dir, opacity: 0 }, { scale: 1, rotation: 0, x: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, t);
+          tl.fromTo(`#mt-n${i}`, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: "power3.out" }, t + 0.08);
+          if (i < COUNT - 1) {
+            tl.to(`#mt-d${i}`, { scale: 0.7, rotation: 18 * dir, x: -380 * dir, opacity: 0, duration: 0.28, ease: "power2.in" }, t + STEP - 0.18);
+            tl.to(`#mt-n${i}`, { y: -30, opacity: 0, duration: 0.2, ease: "power2.in" }, t + STEP - 0.16);
+          }
+        }
+
+        // Last dish floats gently, then the scene clears.
+        const lastT = START + (COUNT - 1) * STEP + 0.45;
+        tl.fromTo("#mt-d5 img", { y: 0 }, { y: -14, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, lastT);
+        tl.to(["#mt-head", "#mt-names", "#mt-rule", "#mt-stage"], { opacity: 0, duration: 0.2, ease: "power2.in" }, 5.0);
+
+        window.__timelines["montage"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

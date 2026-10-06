@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Marcellus";
+          src: url("assets/fonts/marcellus-latin-400-normal.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #2e0b13;
+        }
+        .pl-photo {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        .pl-photo img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+        #pl-fachada img {
+          object-position: 46% 50%;
+        }
+        #pl-patio img {
+          object-position: 50% 40%;
+        }
+        #pl-card {
+          position: absolute;
+          left: 80px;
+          right: 140px;
+          top: 1010px;
+          padding: 52px 56px 50px;
+          background: rgba(85, 26, 37, 0.94);
+          border: 3px solid #c9a66b;
+        }
+        #pl-title {
+          font-family: "Marcellus", serif;
+          font-size: 96px;
+          line-height: 1.02;
+          letter-spacing: -0.02em;
+          color: #f4e8d4;
+        }
+        #pl-title span {
+          display: block;
+        }
+        #pl-sub {
+          color: #e0c08a;
+        }
+        #pl-addr {
+          display: flex;
+          align-items: center;
+          gap: 18px;
+          margin-top: 30px;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 38px;
+          color: #f4e8d4;
+        }
+        #pl-pin {
+          display: block;
+          width: 34px;
+          height: 46px;
+          flex: none;
+        }
+        #pl-mode {
+          margin-top: 14px;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 30px;
+          letter-spacing: 0.24em;
+          color: #c9a66b;
+        }
+      </style>
+
+      <div data-hf-id="hf-4l3i" id="root" data-composition-id="place" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-u890" id="pl-fachada" class="pl-photo"><img data-hf-id="hf-7glw" id="pl-fachada-img" src="assets/place/fachada.jpg" alt="Fachada de China Village"></div>
+        <div data-hf-id="hf-b11x" id="pl-patio" class="pl-photo"><img data-hf-id="hf-9s65" id="pl-patio-img" src="assets/place/patio.jpg" alt="Terraza de China Village"></div>
+
+        <div data-hf-id="hf-65fs" id="pl-card">
+          <div data-hf-id="hf-no2c" id="pl-title"><span data-hf-id="hf-8b00" id="pl-t1">Tradición en</span><span data-hf-id="hf-c9sb" id="pl-sub">Las Condes</span></div>
+          <div data-hf-id="hf-omvf" id="pl-addr">
+            <svg data-hf-id="hf-p3ox" id="pl-pin" viewBox="0 0 24 32" aria-hidden="true">
+              <path data-hf-id="hf-7v0g" d="M12 0C5.4 0 0 5.3 0 11.9 0 20.8 12 32 12 32s12-11.2 12-20.1C24 5.3 18.6 0 12 0zm0 16.5a4.6 4.6 0 1 1 0-9.2 4.6 4.6 0 0 1 0 9.2z" fill="#c9a66b" />
+            </svg>
+            <span data-hf-id="hf-to9x">Manquehue Sur 1022</span>
+          </div>
+          <div data-hf-id="hf-33lx" id="pl-mode">PARA SERVIR Y LLEVAR</div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // Ken Burns on the facade, then a crossfade into the terrace.
+        tl.fromTo("#pl-fachada-img", { scale: 1.16, x: 40 }, { scale: 1.02, x: -20, duration: 2.1, ease: "sine.out" }, 0);
+        tl.fromTo("#pl-patio", { opacity: 0 }, { opacity: 1, duration: 0.45, ease: "power1.inOut" }, 1.75);
+        tl.fromTo("#pl-patio-img", { scale: 1.0, y: 0 }, { scale: 1.1, y: -30, duration: 1.85, ease: "sine.inOut" }, 1.75);
+
+        // Info card rises in; lines cascade.
+        tl.fromTo("#pl-card", { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: "power3.out" }, 0.3);
+        tl.fromTo(["#pl-t1", "#pl-sub"], { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power4.out", stagger: 0.12 }, 0.45);
+        tl.fromTo("#pl-addr", { x: -50, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.8);
+        tl.fromTo("#pl-pin", { scale: 0, y: -20 }, { scale: 1, y: 0, duration: 0.45, ease: "back.out(2.5)" }, 0.85);
+        tl.fromTo("#pl-mode", { opacity: 0, x: 60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power2.out" }, 1.0);
+
+        window.__timelines["place"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

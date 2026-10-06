@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Marcellus";
+          src: url("assets/fonts/marcellus-latin-400-normal.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #cta-logo-wrap {
+          position: absolute;
+          left: 150px;
+          top: 260px;
+          width: 780px;
+          height: 780px;
+        }
+        #cta-logo {
+          display: block;
+          width: 100%;
+          height: 100%;
+          filter: drop-shadow(0 10px 30px rgba(20, 4, 8, 0.5));
+        }
+        #cta-info {
+          position: absolute;
+          left: 110px;
+          right: 140px;
+          top: 1090px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 26px;
+        }
+        #cta-pill {
+          padding: 26px 54px;
+          border-radius: 999px;
+          background: #c9a66b;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 40px;
+          color: #2e0b13;
+          white-space: nowrap;
+        }
+        #cta-phone {
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 58px;
+          letter-spacing: 0.02em;
+          color: #f4e8d4;
+        }
+        #cta-web {
+          font-family: "Marcellus", serif;
+          font-size: 50px;
+          color: #e0c08a;
+        }
+      </style>
+
+      <div data-hf-id="hf-rebv" id="root" data-composition-id="cta" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-oahw" id="cta-logo-wrap"><img data-hf-id="hf-ijw0" id="cta-logo" src="assets/brand/logo-gold.png" alt="China Village"></div>
+        <div data-hf-id="hf-1g86" id="cta-info">
+          <div data-hf-id="hf-crc6" id="cta-pill">Reserva o pide para llevar</div>
+          <div data-hf-id="hf-dr9g" id="cta-phone">+56 2 2229 0362</div>
+          <div data-hf-id="hf-yr4a" id="cta-web">chinavillage.cl</div>
+        </div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // Logo blooms in on the bass hit, then breathes.
+        tl.fromTo("#cta-logo-wrap", { scale: 0.82, opacity: 0, y: 30 }, { scale: 1, opacity: 1, y: 0, duration: 0.8, ease: "power3.out" }, 0.1);
+        tl.fromTo("#cta-logo", { scale: 1 }, { scale: 1.035, duration: 1.4, ease: "sine.inOut", yoyo: true, repeat: 1 }, 0.9);
+
+        // CTA pill springs; contact lines follow.
+        tl.fromTo("#cta-pill", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 0.9);
+        tl.fromTo("#cta-phone", { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power4.out" }, 1.15);
+        tl.fromTo("#cta-web", { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" }, 1.3);
+        tl.fromTo("#cta-pill", { scale: 1 }, { scale: 1.05, duration: 0.35, ease: "sine.inOut", yoyo: true, repeat: 3, immediateRender: false }, 2.2);
+
+        window.__timelines["cta"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

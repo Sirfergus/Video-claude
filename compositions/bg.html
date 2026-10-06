@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Marcellus";
+          src: url("assets/fonts/marcellus-latin-400-normal.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: #551a25;
+        }
+        #bg-vignette {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(ellipse 85% 70% at 50% 50%, rgba(85, 26, 37, 0) 40%, #2e0b13 100%);
+        }
+        #bg-glow {
+          position: absolute;
+          left: 90px;
+          top: 510px;
+          width: 900px;
+          height: 900px;
+          border-radius: 50%;
+          background: radial-gradient(circle, rgba(201, 166, 107, 0.34) 0%, rgba(201, 166, 107, 0.12) 40%, rgba(201, 166, 107, 0) 70%);
+        }
+        .ghost {
+          position: absolute;
+          left: 0;
+          white-space: nowrap;
+          font-family: "Marcellus", serif;
+          font-size: 300px;
+          letter-spacing: 0.04em;
+          color: rgba(201, 166, 107, 0.13);
+        }
+        .ghost::before {
+          content: "CHINA VILLAGE · CHINA VILLAGE";
+        }
+        #ghost-top {
+          top: 20px;
+        }
+        #ghost-bottom {
+          top: 1560px;
+        }
+        .frame-line {
+          position: absolute;
+          background: #c9a66b;
+        }
+        #fl-top,
+        #fl-bottom {
+          left: 48px;
+          width: 984px;
+          height: 3px;
+        }
+        #fl-top {
+          top: 48px;
+        }
+        #fl-bottom {
+          top: 1869px;
+        }
+        #fl-left,
+        #fl-right {
+          top: 48px;
+          width: 3px;
+          height: 1824px;
+        }
+        #fl-left {
+          left: 48px;
+        }
+        #fl-right {
+          left: 1029px;
+        }
+      </style>
+
+      <div data-hf-id="hf-dzqo" id="root" data-composition-id="bg" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-isbq" id="bg-glow"></div>
+        <div data-hf-id="hf-jc1k" id="ghost-top" class="ghost" aria-hidden="true" data-layout-ignore=""></div>
+        <div data-hf-id="hf-h5re" id="ghost-bottom" class="ghost" aria-hidden="true" data-layout-ignore=""></div>
+        <div data-hf-id="hf-s60r" id="bg-vignette"></div>
+        <div data-hf-id="hf-ap7c" id="fl-top" class="frame-line"></div>
+        <div data-hf-id="hf-4uh6" id="fl-bottom" class="frame-line"></div>
+        <div data-hf-id="hf-ojkc" id="fl-left" class="frame-line"></div>
+        <div data-hf-id="hf-ym3n" id="fl-right" class="frame-line"></div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // Frame lines draw in from the corners.
+        tl.fromTo(["#fl-top", "#fl-bottom"], { scaleX: 0 }, { scaleX: 1, duration: 0.9, ease: "power3.out" }, 0.1);
+        tl.fromTo(["#fl-left", "#fl-right"], { scaleY: 0 }, { scaleY: 1, duration: 0.9, ease: "power3.out" }, 0.25);
+
+        // Ambient glow breathes behind the hero dishes.
+        tl.fromTo("#bg-glow", { scale: 0.9, opacity: 0.75 }, { scale: 1.08, opacity: 1, duration: 2.5, ease: "sine.inOut", yoyo: true, repeat: 5 }, 0);
+
+        // Ghost type drifts in opposite directions.
+        tl.fromTo("#ghost-top", { x: 0 }, { x: -900, duration: 15, ease: "none" }, 0);
+        tl.fromTo("#ghost-bottom", { x: -900 }, { x: 0, duration: 15, ease: "none" }, 0);
+
+        window.__timelines["bg"] = tl;
+      </script>
+    </template>
+  </body>
+</html>

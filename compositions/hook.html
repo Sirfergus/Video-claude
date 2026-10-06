@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Marcellus";
+          src: url("assets/fonts/marcellus-latin-400-normal.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #hook-head {
+          position: absolute;
+          left: 110px;
+          right: 140px;
+          top: 300px;
+          display: flex;
+          flex-direction: column;
+          gap: 6px;
+        }
+        .hook-line {
+          display: flex;
+          gap: 28px;
+          font-family: "Marcellus", serif;
+          line-height: 1;
+          letter-spacing: -0.02em;
+        }
+        .hook-line span {
+          display: inline-block;
+        }
+        #hook-l1 {
+          font-size: 100px;
+          color: #f4e8d4;
+        }
+        #hook-l2 {
+          font-size: 128px;
+          color: #e0c08a;
+        }
+        #hook-dish-wrap {
+          position: absolute;
+          left: 30px;
+          top: 720px;
+          width: 1020px;
+          height: 680px;
+        }
+        #hook-dish {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0 40px 50px rgba(20, 4, 8, 0.55));
+        }
+        #hook-tag {
+          position: absolute;
+          left: 110px;
+          top: 1430px;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 30px;
+          letter-spacing: 0.32em;
+          color: #c9a66b;
+        }
+      </style>
+
+      <div data-hf-id="hf-srfg" id="root" data-composition-id="hook" data-width="1080" data-height="1920">
+        <div data-hf-id="hf-vnan" id="hook-head">
+          <div data-hf-id="hf-50o1" id="hook-l1" class="hook-line"><span data-hf-id="hf-5q74" id="hook-w1">¿Antojo</span><span data-hf-id="hf-2rf0" id="hook-w2">de</span></div>
+          <div data-hf-id="hf-8ys2" id="hook-l2" class="hook-line"><span data-hf-id="hf-bwx5" id="hook-w3">comida</span><span data-hf-id="hf-fb2p" id="hook-w4">china?</span></div>
+        </div>
+        <div data-hf-id="hf-0uf6" id="hook-dish-wrap"><img data-hf-id="hf-k964" id="hook-dish" src="assets/dishes/camarones-plancha.png" alt="Camarones al plato caliente"></div>
+        <div data-hf-id="hf-e32x" id="hook-tag">CHINA VILLAGE · LAS CONDES</div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // Hero dish springs in and keeps a slow push.
+        tl.fromTo("#hook-dish-wrap", { scale: 0.25, rotation: -14, y: 260, opacity: 0 }, { scale: 1, rotation: 0, y: 0, opacity: 1, duration: 0.65, ease: "back.out(1.6)" }, 0.05);
+        tl.fromTo("#hook-dish", { scale: 1 }, { scale: 1.07, duration: 1.7, ease: "sine.inOut" }, 0.7);
+
+        // Words slam one by one, each with its own entrance.
+        tl.fromTo("#hook-w1", { x: -140, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power4.out" }, 0.3);
+        tl.fromTo("#hook-w2", { y: 60, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.45);
+        tl.fromTo("#hook-w3", { scale: 1.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.75);
+        tl.fromTo("#hook-w4", { scale: 1.3, rotation: 6, opacity: 0 }, { scale: 1, rotation: 0, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 0.95);
+        tl.fromTo("#hook-tag", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "power2.out" }, 1.15);
+
+        // Exit: dish whips left, type lifts away.
+        tl.to("#hook-dish-wrap", { x: -1150, rotation: -10, duration: 0.3, ease: "power3.in" }, 2.1);
+        tl.to(["#hook-head", "#hook-tag"], { y: -80, opacity: 0, duration: 0.25, ease: "power2.in" }, 2.12);
+
+        window.__timelines["hook"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
