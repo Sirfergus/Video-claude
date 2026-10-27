@@ -42,3 +42,13 @@ Arco: Hook (0–2.4 s) → Antojo / montaje de platos (2.4–7.6 s) → El lugar
 - Datos reales tomados del letrero: Manquehue Sur 1022, Las Condes · +56 2 2229 0362 · chinavillage.cl · "Para servir y llevar".
 - Sin música: no hay proveedor de música disponible en este entorno. Agregar una pista desde la biblioteca de Meta/Instagram al publicar.
 - Nombres de platos en pantalla son descriptivos; ajustarlos a los nombres exactos de la carta si difieren.
+
+## Variantes A/B
+
+Mismo montaje de platos; cambian el gancho (0–2.4 s), el texto de la escena del local y el botón final.
+
+- **A — Antojo** (`index.html`): "¿Antojo de comida china?" · botón "Reserva o pide para llevar".
+- **B — Para llevar** (`variants/variant-b.html`): "¿Hoy no cocinas? Nosotros sí." · "Pide y retira en Las Condes" · botón "Llama y retira tu pedido".
+- **C — Terraza** (`variants/variant-c.html`): abre con la terraza, "¿Almuerzo con terraza?" · "Salón y terraza" · botón "Reserva tu mesa".
+
+Validar / renderizar una variante: `scripts/variant.sh <b|c> check|snapshot|render`.

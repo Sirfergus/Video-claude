@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Marcellus";
+          src: url("assets/fonts/marcellus-latin-400-normal.woff2") format("woff2");
+          font-weight: 400;
+          font-style: normal;
+        }
+        #root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+        }
+        #hb-head {
+          position: absolute;
+          left: 110px;
+          right: 140px;
+          top: 300px;
+        }
+        #hb-q {
+          display: flex;
+          gap: 24px;
+          font-family: "Marcellus", serif;
+          font-size: 100px;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          color: #f4e8d4;
+        }
+        #hb-q span,
+        #hb-a {
+          display: inline-block;
+        }
+        #hb-a {
+          margin-top: 14px;
+          font-family: "Marcellus", serif;
+          font-size: 132px;
+          line-height: 1;
+          letter-spacing: -0.02em;
+          color: #e0c08a;
+        }
+        .hb-dish {
+          position: absolute;
+        }
+        .hb-dish img {
+          display: block;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          filter: drop-shadow(0 32px 40px rgba(20, 4, 8, 0.55));
+        }
+        #hb-left {
+          left: -40px;
+          top: 830px;
+          width: 560px;
+          height: 560px;
+        }
+        #hb-right {
+          left: 520px;
+          top: 800px;
+          width: 580px;
+          height: 580px;
+        }
+        #hb-center {
+          left: 190px;
+          top: 950px;
+          width: 700px;
+          height: 560px;
+        }
+        #hb-tag {
+          position: absolute;
+          left: 110px;
+          top: 1440px;
+          font-family: "Montserrat", sans-serif;
+          font-weight: 700;
+          font-size: 30px;
+          letter-spacing: 0.32em;
+          color: #c9a66b;
+        }
+      </style>
+
+      <div id="root" data-composition-id="hook-b" data-width="1080" data-height="1920">
+        <div id="hb-head">
+          <div id="hb-q"><span id="hb-w1">¿Hoy</span><span id="hb-w2">no</span><span id="hb-w3">cocinas?</span></div>
+          <div id="hb-a">Nosotros sí.</div>
+        </div>
+        <div id="hb-left" class="hb-dish"><img src="assets/dishes/empanaditas.png" alt="Empanaditas" /></div>
+        <div id="hb-right" class="hb-dish"><img src="assets/dishes/frito-salsa.png" alt="Frito con salsa" /></div>
+        <div id="hb-center" class="hb-dish"><img src="assets/dishes/arrollados.png" alt="Arrollados" /></div>
+        <div id="hb-tag">PARA SERVIR Y LLEVAR</div>
+      </div>
+
+      <script>
+        const tl = gsap.timeline({ paused: true });
+
+        // Question lands word by word.
+        tl.fromTo("#hb-w1", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.1);
+        tl.fromTo("#hb-w2", { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power4.out" }, 0.2);
+        tl.fromTo("#hb-w3", { x: 80, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "power3.out" }, 0.3);
+
+        // Dishes drop onto the "table" one after another.
+        tl.fromTo("#hb-left", { y: -500, rotation: -20, opacity: 0 }, { y: 0, rotation: -8, opacity: 1, duration: 0.5, ease: "back.out(1.5)" }, 0.55);
+        tl.fromTo("#hb-right", { y: -500, rotation: 20, opacity: 0 }, { y: 0, rotation: 7, opacity: 1, duration: 0.5, ease: "back.out(1.5)" }, 0.7);
+        tl.fromTo("#hb-center", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.8)" }, 0.85);
+
+        // Answer slams in, tag follows.
+        tl.fromTo("#hb-a", { scale: 1.35, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "power4.out", transformOrigin: "0% 50%" }, 1.1);
+        tl.fromTo("#hb-tag", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.4, ease: "power2.out" }, 1.35);
+        tl.fromTo("#hb-center img", { y: 0 }, { y: -12, duration: 0.5, ease: "sine.inOut", yoyo: true, repeat: 1 }, 1.35);
+
+        // Exit.
+        tl.to(["#hb-left", "#hb-center", "#hb-right"], { x: -1200, duration: 0.3, ease: "power3.in", stagger: 0.03 }, 2.05);
+        tl.to(["#hb-head", "#hb-tag"], { y: -80, opacity: 0, duration: 0.25, ease: "power2.in" }, 2.12);
+
+        window.__timelines["hook-b"] = tl;
+      </script>
+    </template>
+  </body>
+</html>
